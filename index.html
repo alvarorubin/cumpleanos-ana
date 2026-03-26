@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños, Ana</title>
+  <style>
+    body { margin: 0; padding: 0; background: linear-gradient(to bottom, #ffb6c1, #ff69b4); font-family: 'Georgia', serif; color: #fff; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; transition: all 0.5s ease-in-out; overflow-x: hidden; }
+    h1 { font-size: 3em; margin: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); animation: bounce 1s infinite alternate; }
+    @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-10px); } }
+    .heart-container { position: relative; width: 120px; height: 120px; margin: 20px auto; }
+    .heart { position: absolute; width: 100px; height: 100px; background: red; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-45deg); animation: heartbeat 1.5s infinite; }
+    .heart::before, .heart::after { content: ""; position: absolute; width: 100px; height: 100px; background: red; border-radius: 50%; }
+    .heart::before { left: 50px; top: 0; } .heart::after { top: -50px; left: 0; }
+    @keyframes heartbeat { 0%, 100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); } 50% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.2); } }
+    .quote { font-size: 1.4em; font-style: italic; margin: 20px; }
+    .love-button { padding: 12px 25px; font-size: 1.1em; border: none; border-radius: 25px; background: #fff; color: #ff1493; cursor: pointer; transition: background 0.3s, transform 0.3s; }
+    .love-button:hover { background: #ff69b4; color: white; transform: scale(1.05); }
+    .hidden-message { display: none; font-size: 1.2em; margin: 20px; max-width: 600px; line-height: 1.5; padding: 15px; border-radius: 10px; background: rgba(255,255,255,0.2); animation: fadeIn 1s ease-in-out; }
+    @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+    .show-scroll { overflow-y: auto; height: auto; }
+    .balloon { position: absolute; width: 30px; height: 40px; background: #ff0000; border-radius: 50%; opacity: 0.7; animation: floatUp 5s infinite linear; }
+    @keyframes floatUp { 0% { transform: translateY(0); opacity: 0.8; } 100% { transform: translateY(-100vh); opacity: 0; } }
+  </style>
+</head>
+<body id="pageBody">
+  <h1>🎉 Feliz Cumpleaños, Ana 🎂</h1>
+  <div class="heart-container"><div class="heart"></div></div>
+  <div class="quote">Felices 22 añitos mi vida 💖</div>
+  <button class="love-button" onclick="showMessage()">💌 Tu mini regalito</button>
+  <div id="hiddenMessage" class="hidden-message">
+    <h2>💌 Cartita para ti</h2>
+    <p>Hoy es un día muy muy muy especial, no solo porque cumplas 22 añitos sino porque va a ser la primera de muchisisisimas veces que te voy a felicitar :). El 5 de marzo de 2003 se ha convertido en uno de mis dias favoritos porque fue cuando nació el amor de mi vida, apareció en este mundo la persona mas buena, dulce, inteligente y maravillosa que he conocido en mi vida.</p>
+    <p>Mi amor por ti es la cosa mas bonita que he sentido nunca, afortunado es poco, eres la mejor novia del universo, cada dia que pasamos juntos se convierte en uno de los mejores dias que he vivido hasta ahora, cada conversacion, cada beso, cada abrazo, TODO.</p>
+    <p>Feliz cumpleaños, mi vida.</p>
+    <p>Siempre tuyo, siempre juntitos</p>
+    <p>Tu currusquito 💖</p>
+  </div>
+  <script>
+    function showMessage() {
+      let message = document.getElementById("hiddenMessage");
+      let body = document.getElementById("pageBody");
+      message.style.display = "block";
+      body.classList.add("show-scroll");
+      for (let i = 0; i < 10; i++) {
+        let balloon = document.createElement("div");
+        balloon.classList.add("balloon");
+        balloon.style.left = Math.random() * window.innerWidth + "px";
+        balloon.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(balloon);
+        setTimeout(() => { balloon.remove(); }, 5000);
+      }
+    }
+  </script>
+</body>
+</html>
